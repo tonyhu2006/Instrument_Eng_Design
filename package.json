@@ -1,0 +1,19 @@
+{
+    "name": "instrument_eng_design",
+    "version": "1.0.0",
+    "private": true,
+    "workspaces": [
+      "front_end_react",
+      "back_end_django"
+    ],
+    "scripts": {
+      "start": "docker-compose up",
+      "start:dev": "concurrently \"yarn workspace front_end_react start\" \"yarn workspace backend_end_django start\"",
+      "build": "yarn workspace front_end_react build && yarn workspace back_end_django build",
+      "test": "yarn workspace front_end_react test && yarn workspace back_end_django test",
+      "lint": "yarn workspace front_end_react lint && yarn workspace back_end_django lint"
+    },
+    "devDependencies": {
+      "concurrently": "^6.2.0"
+    }
+  }

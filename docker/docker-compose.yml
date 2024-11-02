@@ -1,0 +1,32 @@
+version: '3.8'
+
+services:
+  front_end_react:
+    build:
+      context: ./front_end_react
+      dockerfile: ../docker/front_end_react.Dockerfile
+    ports:
+      - "3000:3000"
+    depends_on:
+      - back_end_django
+
+  back_end_django:
+    build:
+      context: ./back_end_django
+      dockerfile: ../docker/back_end_django.Dockerfile
+    ports:
+      - "8000:8000"
+    depends_on:
+      - db
+
+  db:
+    image: postgres:17
+    environment:
+      POSTGRES_DB: inst_eng_design
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: Hjd-961207
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+
+volumes:
+  pgdata:

@@ -17,9 +17,19 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 from backend_app.views import home  # Import the home view
+from rest_framework_simplejwt.views import (
+    TokenObtainPairView,
+    TokenRefreshView,
+)
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', home, name='home'),  # Add this line for the root URL
     path('', include('backend_app.urls')),  # Include your app's URLs
+
+    path('api/token/', TokenObtainPairView.as_view(), name='token_obtain_pair'),
+    path('api/token/refresh/', TokenRefreshView.as_view(), name='token_refresh'),
+    path('api/users/', include('apps.user_management.urls')),
+    path('api/projects/', include('apps.project_management.urls')),
+    # 其他子系统路由...
 ]

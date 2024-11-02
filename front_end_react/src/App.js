@@ -1,4 +1,16 @@
 import React, { useState, useEffect } from 'react';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import { ThemeProvider } from '@material-ui/core/styles';
+import theme from './theme';
+import Routes from './routes';
+
+const App = () => (
+  <ThemeProvider theme={theme}>
+    <Routes />
+  </ThemeProvider>
+);
+
+
 
 function App() {
     const [data, setData] = useState(null);
@@ -37,6 +49,17 @@ function App() {
             <h1>Data from Django API</h1>
             {data ? <pre>{JSON.stringify(data, null, 2)}</pre> : <div>No data available</div>}
         </div>
+
+        <Router>
+          <Switch>
+            <Route exact path="/" component={Dashboard} />
+            <Route path="/user_management" component={UserManagement} />
+            <Route path="/project_management" component={ProjectManagement} />
+            <Route path="/instrument_management" component={InstrumentManagement} />
+            {/* 其他路由 */}
+          </Switch>
+        </Router>
+
     );
 }
 
