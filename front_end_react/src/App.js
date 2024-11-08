@@ -50,7 +50,11 @@ function App() {
             {data ? <pre>{JSON.stringify(data, null, 2)}</pre> : <div>No data available</div>}
         </div>
 
-        AppRoutes.AppRoutes
+        <ThemeProvider theme={theme}>
+          <Router>
+            <AppRoutes />
+          </Router>
+        </ThemeProvider>
         
       </>
     );
