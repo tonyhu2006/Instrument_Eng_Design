@@ -29,7 +29,7 @@ urlpatterns = [
 
     path('api/token/', TokenObtainPairView.as_view(), name='token_obtain_pair'),
     path('api/token/refresh/', TokenRefreshView.as_view(), name='token_refresh'),
-    path('api/users/', include('apps.user_management.urls')),
-    path('api/projects/', include('apps.project_management.urls')),
+    path('api/inst_administration/', include('backend_app.inst_administration.urls')),
+    path('api/inst_projects/', include('backend_app.inst_projects.urls')),
     # 其他子系统路由...
 ]

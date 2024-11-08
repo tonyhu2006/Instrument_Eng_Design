@@ -6,7 +6,7 @@ from django.core.exceptions import ImproperlyConfigured
 from django.utils.functional import cached_property
 from django.utils.module_loading import import_string, module_has_submodule
 
-APPS_MODULE_NAME = "apps"
+APPS_MODULE_NAME = "backend_app"
 MODELS_MODULE_NAME = "models"
 
 
@@ -23,7 +23,7 @@ class AppConfig:
 
         # Reference to the Apps registry that holds this AppConfig. Set by the
         # registry when it registers the AppConfig instance.
-        self.apps = None
+        self.backend_app = None
 
         # The following attributes could be defined at the class level in a
         # subclass, hence the test-and-set pattern.

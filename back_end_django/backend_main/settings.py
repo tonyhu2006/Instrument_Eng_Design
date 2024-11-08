@@ -39,6 +39,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'backend_app.apps.BackendAppConfig',  # instrument engineering design backend app
     'corsheaders',  # Added for CORS support
+    'backend_app.inst_administration',
+    'backend_app.inst_projects',
 ]
 
 MIDDLEWARE = [
