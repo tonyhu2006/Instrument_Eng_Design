@@ -45,10 +45,13 @@ function App() {
 
     return (
       <>
-        <div>
-            <h1>Data from Django API</h1>
-            {data ? <pre>{JSON.stringify(data, null, 2)}</pre> : <div>No data available</div>}
-        </div>
+               
+        <ThemeProvider theme={theme}>
+          <div>
+              <h1>Data from Django API</h1>
+              {data ? <pre>{JSON.stringify(data, null, 2)}</pre> : <div>No data available</div>}
+          </div>
+        </ThemeProvider> 
 
         <ThemeProvider theme={theme}>
           <Router>
