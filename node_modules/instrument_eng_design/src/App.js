@@ -1,20 +1,15 @@
 import React, { useState, useEffect } from 'react';
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
-import { ThemeProvider } from '@material-ui/core/styles';
-import theme from './theme';
-import Routes from './routes';
-import Dashboard from './Dashboard';
-import UserManagement from './UserManagement';
-import ProjectManagement from './ProjectManagement';
-import InstrumentManagement from './InstrumentManagement';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { ThemeProvider } from '@mui/styles';
+import theme from './styles/theme';
+import AppRoutes from './routes';
+
 
 /* const App = () => (
   <ThemeProvider theme={theme}>
   <Routes />
   </ThemeProvider>
 ); */
-
-
 
 function App() {
     const [data, setData] = useState(null);
@@ -55,15 +50,8 @@ function App() {
             {data ? <pre>{JSON.stringify(data, null, 2)}</pre> : <div>No data available</div>}
         </div>
 
-        <Router>
-          <Switch>
-            <Route exact path="/" component={Dashboard} />
-            <Route path="/inst_administration" component={UserManagement} />
-            <Route path="/inst_projects" component={ProjectManagement} />
-            <Route path="/inst_instrument_index" component={InstrumentManagement} />
-            {/* 其他路由 */} */
-          </Switch>
-        </Router>
+        AppRoutes.AppRoutes
+        
       </>
     );
 }
